@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#0d0720">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Garviverse ✨</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Quicksand:wght@400;500;600;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- ============================================================
+     GLOBAL BACKGROUND LAYERS (persist across all pages)
+     ============================================================ -->
+<div id="stars-bg" aria-hidden="true"></div>
+<div id="fireflies-container" aria-hidden="true"></div>
+<canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+<!-- ============================================================
+     PAGE 1 — PORTAL
+     Night sky, glowing star, entry into the site
+     ============================================================ -->
+<div id="page-portal" class="page active" role="main">
+  <div class="portal-wrap">
+    <div class="portal-text-top">
+      <h1 class="portal-greeting">Hey Garvii.</h1>
+      <p class="portal-sub">Before you leave...</p>
+    </div>
+
+    <button id="portal-star" class="portal-star-btn" aria-label="Click the star to enter">
+      <div class="star-rays" aria-hidden="true">
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+      </div>
+      <div class="star-core" aria-hidden="true">★</div>
+      <div class="star-halo" aria-hidden="true"></div>
+    </button>
+
+    <p class="portal-click-hint">Click the star.</p>
+    <p class="portal-secret-footer" aria-hidden="true">Some words unlock memories.</p>
+  </div>
+</div>
+
+<!-- Portal 5-click secret popup -->
+<div id="secret-popup" class="overlay-backdrop" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Secret message">
+  <div class="popup-card glass-card">
+    <p id="secret-popup-text" class="popup-text"></p>
+    <button class="btn-primary" onclick="closeSecretPopup()">Okay fine 🙄</button>
+  </div>
+</div>
+
+<!-- ============================================================
+     PAGE 2 — MOOD FIXER
+     Four mood buttons with unique animated responses
+     ============================================================ -->
+<div id="page-mood" class="page" role="main">
+  <div class="page-scroll-inner">
+    <h2 class="page-title">How are we feeling today?</h2>
+    <p class="page-subtitle">No judgment here. Promise.</p>
+
+    <div class="mood-grid">
+      <button class="mood-btn mood-sad" onclick="setMood('sad')" aria-label="I'm Sad">
+        <span class="mood-emoji">😢</span>
+        <span class="mood-label">I'm Sad</span>
+      </button>
+      <button class="mood-btn mood-angry" onclick="setMood('angry')" aria-label="I'm Angry">
+        <span class="mood-emoji">😤</span>
+        <span class="mood-label">I'm Angry</span>
+      </button>
+      <button class="mood-btn mood-tired" onclick="setMood('tired')" aria-label="I'm Tired">
+        <span class="mood-emoji">😴</span>
+        <span class="mood-label">I'm Tired</span>
+      </button>
+      <button class="mood-btn mood-overthinking" onclick="setMood('overthinking')" aria-label="I'm Overthinking">
+        <span class="mood-emoji">🌀</span>
+        <span class="mood-label">I'm Overthinking</span>
+      </button>
+    </div>
+
+    <!-- Dynamic mood response injected by JS -->
+    <div id="mood-response" class="mood-response" aria-live="polite" aria-atomic="true"></div>
+  </div>
+</div>
+
+<!-- ============================================================
+     PAGE 3 — MEMORY TIMELINE
+     Expandable vertical timeline with 5 memory cards
+
+     HOW TO CUSTOMISE:
+     - Edit .memory-title and .memory-preview for each card
+     - Replace placeholder text inside .memory-detail > p
+     - Uncomment the <img> tag and set src to add a photo
+     - Add more .timeline-item blocks to grow the timeline
+     ============================================================ -->
+<div id="page-memory" class="page" role="main">
+  <div class="page-scroll-inner">
+    <h2 class="page-title">Our Little Timeline</h2>
+    <p class="page-subtitle">Some moments deserve to stay.</p>
+
+    <div class="timeline" role="list">
+
+      <!-- Memory 1 -->
+      <div class="timeline-item" role="listitem">
+        <div class="tl-dot" aria-hidden="true">⭐</div>
+        <div class="memory-card glass-card" onclick="toggleMemory(this)" role="button" tabindex="0" aria-expanded="false">
+          <div class="memory-header">
+            <span class="memory-icon">🚗</span>
+            <div>
+              <h3 class="memory-title">The Diecast Story</h3>
+              <p class="memory-preview">Some things are worth the hunt…</p>
+            </div>
+            <span class="memory-chevron" aria-hidden="true">›</span>
+          </div>
+          <div class="memory-body">
+            <!-- ✏️ REPLACE: Write the Diecast memory here -->
+            <p>This is where the Diecast Story goes. Replace this with the real memory — what happened, what was said, what made it special. The small details, the funny part, the moment you both remember differently.</p>
+            <!--
+              ADD PHOTO: Uncomment the line below and set the src
+              <img class="memory-img" src="images/diecast.jpg" alt="Diecast memory">
+            -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Memory 2 -->
+      <div class="timeline-item" role="listitem">
+        <div class="tl-dot" aria-hidden="true">🪔</div>
+        <div class="memory-card glass-card" onclick="toggleMemory(this)" role="button" tabindex="0" aria-expanded="false">
+          <div class="memory-header">
+            <span class="memory-icon">🌺</span>
+            <div>
+              <h3 class="memory-title">Durga Puja Photos</h3>
+              <p class="memory-preview">The festival that felt different this time…</p>
+            </div>
+            <span class="memory-chevron" aria-hidden="true">›</span>
+          </div>
+          <div class="memory-body">
+            <!-- ✏️ REPLACE: Write the Durga Puja memory here -->
+            <p>This is where the Durga Puja memory goes. Describe the photos, the chaos, the dressing up, the conversations that happened between pandal visits.</p>
+            <!--
+              <img class="memory-img" src="images/durgapuja.jpg" alt="Durga Puja">
+            -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Memory 3 -->
+      <div class="timeline-item" role="listitem">
+        <div class="tl-dot" aria-hidden="true">💚</div>
+        <div class="memory-card glass-card" onclick="toggleMemory(this)" role="button" tabindex="0" aria-expanded="false">
+          <div class="memory-header">
+            <span class="memory-icon">🥤</span>
+            <div>
+              <h3 class="memory-title">Monster Cans</h3>
+              <p class="memory-preview">Green and chaotic, just like us…</p>
+            </div>
+            <span class="memory-chevron" aria-hidden="true">›</span>
+          </div>
+          <div class="memory-body">
+            <!-- ✏️ REPLACE: Write the Monster Cans memory here -->
+            <p>This is where the Monster Cans memory lives. The energy drinks, the late hours, the conversations that happened because of them.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Memory 4 -->
+      <div class="timeline-item" role="listitem">
+        <div class="tl-dot" aria-hidden="true">🍨</div>
+        <div class="memory-card glass-card" onclick="toggleMemory(this)" role="button" tabindex="0" aria-expanded="false">
+          <div class="memory-header">
+            <span class="memory-icon">🍫</span>
+            <div>
+              <h3 class="memory-title">The Sundae Incident</h3>
+              <p class="memory-preview">Nobody talks about it. We both know.</p>
+            </div>
+            <span class="memory-chevron" aria-hidden="true">›</span>
+          </div>
+          <div class="memory-body">
+            <!-- ✏️ REPLACE: Write the Sundae Incident here -->
+            <p>This is where the Sundae Incident goes. What exactly happened? Was it chaotic? Funny? Did someone spill something? Did the chocolate end up somewhere it shouldn't have?</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Memory 5 -->
+      <div class="timeline-item" role="listitem">
+        <div class="tl-dot" aria-hidden="true">🌙</div>
+        <div class="memory-card glass-card" onclick="toggleMemory(this)" role="button" tabindex="0" aria-expanded="false">
+          <div class="memory-header">
+            <span class="memory-icon">💬</span>
+            <div>
+              <h3 class="memory-title">Late Night Conversations</h3>
+              <p class="memory-preview">3 AM thoughts and too much honesty…</p>
+            </div>
+            <span class="memory-chevron" aria-hidden="true">›</span>
+          </div>
+          <div class="memory-body">
+            <!-- ✏️ REPLACE: Write the Late Night Conversations memory here -->
+            <p>This is for the conversations that only happen after midnight. The confessions, the jokes that are only funny at that hour, the things said that are still remembered in the morning.</p>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /timeline -->
+  </div>
+</div>
+
+<!-- ============================================================
+     PAGE 4 — SECRET GARDEN
+     30 clickable flowers, each with a hidden note
+     (Notes are configured in script.js → gardenNotes array)
+     ============================================================ -->
+<div id="page-garden" class="page" role="main">
+  <div class="page-scroll-inner">
+    <h2 class="page-title">The Secret Garden</h2>
+    <p class="page-subtitle">Every flower has something to say.</p>
+    <p class="garden-progress" id="garden-progress" aria-live="polite">0 / 30 bloomed</p>
+    <div class="garden-grid" id="garden-grid" role="list" aria-label="Garden flowers"></div>
+  </div>
+
+  <!-- Flower note modal -->
+  <div id="note-modal" class="overlay-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="note-card glass-card" role="document">
+      <div class="note-flower-big" id="note-flower-display" aria-hidden="true"></div>
+      <p id="note-text" class="note-body"></p>
+      <button class="btn-primary" onclick="closeNoteModal()">✨ Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     PAGE 5 — MUSIC ROOM
+     Cassette player with playlist
+
+     HOW TO ADD SONGS:
+     1. Create a folder called 'music/' next to index.html
+     2. Add your .mp3 files: music/song1.mp3, song2.mp3 etc.
+     3. Open script.js → find the `songs` array → update each entry
+     ============================================================ -->
+<div id="page-music" class="page" role="main">
+  <div class="page-scroll-inner">
+    <h2 class="page-title">Music Room</h2>
+    <p class="page-subtitle">Curated, just for you.</p>
+
+    <div class="music-player glass-card">
+      <!-- Cassette visual -->
+      <div class="cassette" id="cassette" aria-hidden="true">
+        <div class="cassette-shell">
+          <div class="cassette-window">
+            <div class="cassette-reel" id="reel-left"></div>
+            <div class="cassette-tape-bridge"></div>
+            <div class="cassette-reel" id="reel-right"></div>
+          </div>
+          <div class="cassette-label">
+            <span id="cassette-label-text">♫ Select a song</span>
+          </div>
+          <div class="cassette-screw tl" aria-hidden="true"></div>
+          <div class="cassette-screw tr" aria-hidden="true"></div>
+          <div class="cassette-screw bl" aria-hidden="true"></div>
+          <div class="cassette-screw br" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <!-- Song info -->
+      <div class="song-info">
+        <p id="song-title" class="song-title">Choose a song to begin</p>
+        <p id="song-counter" class="song-counter">— / —</p>
+      </div>
+
+      <!-- Progress bar (clickable/tappable seek) -->
+      <div class="seek-wrap" id="seek-wrap" role="slider" aria-label="Song progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <div class="seek-track">
+          <div id="seek-fill" class="seek-fill"></div>
+          <div id="seek-thumb" class="seek-thumb"></div>
+        </div>
+        <div class="seek-times">
+          <span id="time-current">0:00</span>
+          <span id="time-total">0:00</span>
+        </div>
+      </div>
+
+      <!-- Playback controls -->
+      <div class="music-controls" role="group" aria-label="Playback controls">
+        <button class="ctrl-btn" id="btn-prev" onclick="prevSong()" aria-label="Previous song">⏮</button>
+        <button class="ctrl-btn play-btn" id="btn-play" onclick="togglePlay()" aria-label="Play or pause">▶</button>
+        <button class="ctrl-btn" id="btn-next" onclick="nextSong()" aria-label="Next song">⏭</button>
+      </div>
+
+      <!-- Playlist -->
+      <div class="playlist" id="playlist" role="list" aria-label="Song playlist"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     PAGE 6 — PHOTO GALLERY
+     Polaroid photos hanging on strings
+
+     HOW TO ADD PHOTOS:
+     1. Create a folder called 'images/' next to index.html
+     2. Add your photos: images/photo1.jpg, photo2.jpg etc.
+     3. Open script.js → find the `photos` array → update each entry
+     ============================================================ -->
+<div id="page-gallery" class="page" role="main">
+  <div class="page-scroll-inner">
+    <h2 class="page-title">The Gallery</h2>
+    <p class="page-subtitle">Moments worth keeping.</p>
+
+    <div class="gallery-wall" id="gallery-wall" role="list" aria-label="Photo gallery"></div>
+  </div>
+
+  <!-- Photo lightbox -->
+  <div id="photo-modal" class="overlay-backdrop" role="dialog" aria-modal="true" aria-hidden="true" onclick="closePhotoModal()">
+    <div class="lightbox-inner">
+      <div class="polaroid-xl" id="lightbox-card">
+        <div id="lightbox-img-wrap"></div>
+        <p id="lightbox-caption" class="lightbox-caption"></p>
+      </div>
+      <p class="tap-close">Tap anywhere to close</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     PAGE 7 — CONSTELLATION
+     Click all stars to form the letter G
+     ============================================================ -->
+<div id="page-constellation" class="page" role="main">
+  <div class="constellation-wrap">
+    <h2 class="page-title cons-title">Connect the Stars</h2>
+    <p class="page-subtitle cons-sub">Every star has been waiting.</p>
+
+    <div class="cons-map" id="cons-map" role="group" aria-label="Constellation stars">
+      <canvas id="cons-canvas" aria-hidden="true"></canvas>
+      <!-- Stars injected by JS -->
+    </div>
+
+    <div id="cons-message" class="cons-message" aria-live="polite">
+      <p id="cons-msg-text">Click all the stars…</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     PAGE 8 — LETTER
+     Envelope opens to reveal a handwritten letter
+
+     HOW TO CUSTOMISE:
+     Find the section marked ✏️ LETTER CONTENT below and
+     replace the placeholder text with your personal message.
+     HTML formatting is supported (<br>, <strong>, <em>).
+     ============================================================ -->
+<div id="page-letter" class="page" role="main">
+  <div class="page-scroll-inner">
+    <h2 class="page-title">A Letter</h2>
+    <p class="page-subtitle">Written carefully.</p>
+
+    <div class="letter-scene" id="letter-scene">
+
+      <!-- Envelope (shown before opening) -->
+      <div id="letter-envelope" class="envelope" onclick="openLetter()" role="button" tabindex="0" aria-label="Tap to open the letter">
+        <div class="env-body">
+          <div class="env-flap" aria-hidden="true"></div>
+          <div class="env-seal" aria-hidden="true">💌</div>
+        </div>
+        <p class="env-hint">Tap to open</p>
+      </div>
+
+      <!-- Letter paper (shown after opening) -->
+      <div id="letter-paper" class="letter-paper" aria-hidden="true">
+        <div class="letter-lines" aria-hidden="true"></div>
+        <div class="letter-content">
+
+          <p class="letter-salutation">Dear Garvi,</p>
+
+          <!-- ✏️ LETTER CONTENT — Replace everything between these comments -->
+          <div class="letter-body">
+            This is where your letter goes.<br><br>
+
+            Replace this placeholder with whatever you want to say.
+            It can be long, short, funny, honest — anything.<br><br>
+
+            You could write about a specific memory, something you've been
+            meaning to say for a while, an inside joke, or just the things
+            that feel important to put into words.<br><br>
+
+            This letter will stay here, always, waiting to be read again
+            whenever she needs it.
+          </div>
+          <!-- ✏️ END OF LETTER CONTENT -->
+
+          <p class="letter-closing">With love,</p>
+          <p class="letter-signature">Someone who thinks you're pretty great.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     PAGE 9 — FINAL GIFT + THE LITTLE CORNER
+     Gift box → confetti → secret word room
+     ============================================================ -->
+<div id="page-gift" class="page" role="main">
+
+  <!-- SECTION A: Gift box -->
+  <div id="gift-section" class="page-scroll-inner gift-section">
+    <h2 class="page-title">One Last Thing</h2>
+    <p class="page-subtitle">Go ahead. Open it.</p>
+
+    <div id="gift-box" class="gift-box" onclick="openGift()" role="button" tabindex="0" aria-label="Click to open the gift">
+      <div class="gift-lid" id="gift-lid">
+        <div class="gift-bow-top" aria-hidden="true">🎀</div>
+      </div>
+      <div class="gift-base">
+        <div class="ribbon-h" aria-hidden="true"></div>
+        <div class="ribbon-v" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <div id="gift-message" class="gift-message" aria-live="polite"></div>
+    <button id="btn-one-more" class="btn-primary" onclick="oneMoreThing()" style="display:none">One More Thing ✨</button>
+  </div>
+
+  <!-- SECTION B: The Little Corner (revealed after gift) -->
+  <div id="little-corner" class="little-corner" style="display:none" role="main">
+    <div class="corner-bg-stars" id="corner-bg-stars" aria-hidden="true"></div>
+    <div class="corner-bg-flies" id="corner-bg-flies" aria-hidden="true"></div>
+    <div class="corner-particles" id="corner-particles" aria-hidden="true"></div>
+
+    <div class="corner-content">
+      <h2 class="corner-title">The Little Corner</h2>
+      <p class="corner-line">Before you go…</p>
+      <p class="corner-hint">Some memories have a way of unlocking things.</p>
+      <p class="corner-hint">Try typing something.</p>
+
+      <div class="secret-field-wrap">
+        <input
+          type="text"
+          id="secret-input"
+          class="secret-input"
+          placeholder="Type a secret word…"
+          aria-label="Secret word input"
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"
+          spellcheck="false"
+        >
+      </div>
+
+      <div id="secret-response" class="secret-response" aria-live="polite" aria-atomic="true"></div>
+    </div>
+
+    <!-- Animation overlay for secret words (fixed, pointer-events:none) -->
+    <div id="secret-anim" class="secret-anim-layer" aria-hidden="true"></div>
+  </div>
+
+</div><!-- /page-gift -->
+
+<!-- ============================================================
+     NAVIGATION BAR
+     Hidden on portal, revealed when site is entered
+     ============================================================ -->
+<nav id="main-nav" class="main-nav" aria-label="Site navigation" role="navigation">
+  <button class="nav-btn" data-page="page-mood"          onclick="navigateTo('page-mood')"          aria-label="Mood"><span class="nav-ico">💭</span><span class="nav-lbl">Mood</span></button>
+  <button class="nav-btn" data-page="page-memory"        onclick="navigateTo('page-memory')"        aria-label="Memories"><span class="nav-ico">📜</span><span class="nav-lbl">Memories</span></button>
+  <button class="nav-btn" data-page="page-garden"        onclick="navigateTo('page-garden')"        aria-label="Garden"><span class="nav-ico">🌸</span><span class="nav-lbl">Garden</span></button>
+  <button class="nav-btn" data-page="page-music"         onclick="navigateTo('page-music')"         aria-label="Music"><span class="nav-ico">🎵</span><span class="nav-lbl">Music</span></button>
+  <button class="nav-btn" data-page="page-gallery"       onclick="navigateTo('page-gallery')"       aria-label="Gallery"><span class="nav-ico">📸</span><span class="nav-lbl">Gallery</span></button>
+  <button class="nav-btn" data-page="page-constellation" onclick="navigateTo('page-constellation')" aria-label="Stars"><span class="nav-ico">⭐</span><span class="nav-lbl">Stars</span></button>
+  <button class="nav-btn" data-page="page-letter"        onclick="navigateTo('page-letter')"        aria-label="Letter"><span class="nav-ico">💌</span><span class="nav-lbl">Letter</span></button>
+  <button class="nav-btn" data-page="page-gift"          onclick="navigateTo('page-gift')"          aria-label="Gift"><span class="nav-ico">🎁</span><span class="nav-lbl">Gift</span></button>
+</nav>
+
+<!-- ============================================================
+     KONAMI CODE SECRET ROOM
+     Unlock: ↑ ↑ ↓ ↓ ← → ← → B A
+     ============================================================ -->
+<div id="konami-room" class="konami-room" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Secret room">
+  <div class="konami-stars-bg" id="konami-stars-bg" aria-hidden="true"></div>
+  <div class="konami-flies" id="konami-flies" aria-hidden="true"></div>
+
+  <div class="konami-content">
+    <h2 class="konami-title">Congratulations.</h2>
+    <p class="konami-sub">You found the room nobody was supposed to find.</p>
+
+    <button id="konami-star-btn" class="konami-star" onclick="konamiStarClick()" aria-label="Click the bright star">★</button>
+
+    <div id="konami-star-msg" class="konami-star-msg" aria-live="polite"></div>
+
+    <button class="btn-secondary konami-exit" onclick="closeKonamiRoom()">✕ Leave quietly</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
