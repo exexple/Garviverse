@@ -14,11 +14,11 @@
    The 'bg' value tints the music-room background when playing.
    ============================================================ */
 const SONGS = [
-  { title: "♫ Song 1 — Add your favourite track",   src: "music/song1.mp3", bg: "#c8b8e8" },
-  { title: "♫ Song 2 — Something cozy",             src: "music/song2.mp3", bg: "#87ceeb" },
-  { title: "♫ Song 3 — That one track",             src: "music/song3.mp3", bg: "#f8c8d8" },
-  { title: "♫ Song 4 — Late night feels",           src: "music/song4.mp3", bg: "#ffd878" },
-  { title: "♫ Song 5 — The soft one",               src: "music/song5.mp3", bg: "#c8e8c0" },
+  { title: "♫ Song 1 — A song that I'd sing for you",   src: "music/song1.mp3", bg: "#c8b8e8" },
+  { title: "♫ Song 2 — we're birds of a feather hehe",             src: "music/song2.mp3", bg: "#87ceeb" },
+  { title: "♫ Song 3 — This one's for you",             src: "music/song3.mp3", bg: "#f8c8d8" },
+  { title: "♫ Song 4 — well this won't hurt would it?",           src: "music/song4.mp3", bg: "#ffd878" },
+  { title: "♫ Song 5 — abb aur udaas mat hona okay?",               src: "music/song5.mp3", bg: "#c8e8c0" },
 ];
 
 /* ============================================================
