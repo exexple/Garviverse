@@ -18,7 +18,7 @@ const SONGS = [
   { title: "♫ Song 2 — we're birds of a feather hehe",             src: "music/song2.mp3", bg: "#87ceeb" },
   { title: "♫ Song 3 — This one's for you",             src: "music/song3.mp3", bg: "#f8c8d8" },
   { title: "♫ Song 4 — you're just like this song",           src: "music/song4.mp3", bg: "#ffd878" },
-  { title: "♫ Song 5 — abb aur udaas mat hona pleasee 🥺",               src: "music/song5.mp3", bg: "#c8e8c0" },
+  { title: "♫ Song 5 — ye sunke hsdo pewissss 🥺",               src: "music/song5.mp3", bg: "#c8e8c0" },
 ];
 
 /* ============================================================
@@ -30,12 +30,12 @@ const SONGS = [
    Leave src as "" to display a placeholder frame.
    ============================================================ */
 const PHOTOS = [
-  { src: "", caption: "Add your first photo here 📷" },
-  { src: "", caption: "A memory worth keeping"       },
-  { src: "", caption: "This moment"                  },
-  { src: "", caption: "Just us being us"             },
-  { src: "", caption: "Another one for the wall"     },
-  { src: "", caption: "Add a caption here"           },
+  { src: "images/img1.jpg", caption: "Add your first photo here 📷" },
+  { src: "images/img2.jppg", caption: "A memory worth keeping"       },
+  { src: "images/img3.jpg", caption: "This moment"                  },
+  { src: "images/img4.jpg", caption: "Just us being us"             },
+  { src: "images/img5.jpg", caption: "Another one for the wall"     },
+  { src: "images/img6.jpg", caption: "Add a caption here"           },
 ];
 
 /* ============================================================
