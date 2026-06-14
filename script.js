@@ -31,9 +31,9 @@ const SONGS = [
    ============================================================ */
 const PHOTOS = [
   { src: "images/img1.jpg", caption: "ai wala bachoan cause aapne nhi diya 😔" },
-  { src: "images/img2.jppg", caption: "you look good when you smile"       },
+  { src: "images/img2.jppg", caption: "A DIVAAAA 💅🏻"       },
   { src: "images/img3.jpg", caption: "never lose this smile"                  },
-  { src: "images/img4.jpg", caption: "OMG A DIVAAAA"             },
+  { src: "images/img4.jpg", caption: "you look good when you smile"             },
   { src: "images/img5.jpg", caption: "this is the garvi i wanna look at"     },
   { src: "images/img6.jpg", caption: "this is how you look when you stay happy"           },
 ];
