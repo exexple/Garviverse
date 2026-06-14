@@ -30,12 +30,12 @@ const SONGS = [
    Leave src as "" to display a placeholder frame.
    ============================================================ */
 const PHOTOS = [
-  { src: "images/img1.jpg", caption: "Add your first photo here 📷" },
-  { src: "images/img2.jppg", caption: "A memory worth keeping"       },
-  { src: "images/img3.jpg", caption: "This moment"                  },
-  { src: "images/img4.jpg", caption: "Just us being us"             },
-  { src: "images/img5.jpg", caption: "Another one for the wall"     },
-  { src: "images/img6.jpg", caption: "Add a caption here"           },
+  { src: "images/img1.jpg", caption: "ai wala bachoan cause aapne nhi diya 😔" },
+  { src: "images/img2.jppg", caption: "you look good when you smile"       },
+  { src: "images/img3.jpg", caption: "never lose this smile"                  },
+  { src: "images/img4.jpg", caption: "OMG A DIVAAAA"             },
+  { src: "images/img5.jpg", caption: "this is the garvi i wanna look at"     },
+  { src: "images/img6.jpg", caption: "this is how you look when you stay happy"           },
 ];
 
 /* ============================================================
